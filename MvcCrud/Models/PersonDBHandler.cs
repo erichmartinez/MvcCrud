@@ -21,7 +21,7 @@ namespace MvcCrud.Models
         public bool InsertPerson(PersonModel iList)
         {
             connection();
-            string query = "INSERT INTO Person VALUES('" + iList.Name + "','" + iList.Address + "'," + iList.Phone + ",'" + iList.Email + "')";
+            string query = "INSERT INTO Person VALUES('" + iList.Name + "','" + iList.Address + "','" + iList.Phone + "','" + iList.Email + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int i = cmd.ExecuteNonQuery();
@@ -54,7 +54,7 @@ namespace MvcCrud.Models
                     ID = Convert.ToInt32(dr["ID"]),
                     Name = Convert.ToString(dr["Name"]),
                     Address = Convert.ToString(dr["Address"]),
-                    Phone = Convert.ToInt32(dr["Phone"]),
+                    Phone = Convert.ToString(dr["Phone"]),
                     Email = Convert.ToString(dr["Email"])
                 });
             }
@@ -64,7 +64,7 @@ namespace MvcCrud.Models
         public bool UpdatePerson(PersonModel iList)
         {
             connection();
-            string query = "UPDATE Person SET Name = '" + iList.Name + "', Address = '" + iList.Address + "', Phone = " + iList.Phone + ", Email = '" + iList.Email + "' WHERE ID = " + iList.ID;
+            string query = "UPDATE Person SET Name = '" + iList.Name + "', Address = '" + iList.Address + "', Phone = '" + iList.Phone + "', Email = '" + iList.Email + "' WHERE ID = " + iList.ID;
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int i = cmd.ExecuteNonQuery();
